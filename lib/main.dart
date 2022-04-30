@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:taekibloc1/gen/assets.gen.dart';
+import 'package:taekibloc1/my_colors.dart';
 import 'package:taekibloc1/splash_screen.dart';
 void main() {
   runApp(const MyApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    
+  statusBarColor:solIdColors.statusBarColor,
+  statusBarIconBrightness: Brightness.dark,
+  systemNavigationBarColor: solIdColors.systemNavigationBarColor,
+  systemNavigationBarIconBrightness: Brightness.dark,
+  ));
 }
 
 class MyApp extends StatelessWidget {
