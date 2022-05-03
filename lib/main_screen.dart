@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:taekibloc1/gen/assets.gen.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 import 'package:taekibloc1/models/fakedata.dart';
 import 'package:taekibloc1/my_colors.dart';
-import 'package:taekibloc1/models/fakedata.dart';
+
 class mainScreen extends StatelessWidget {
   
 
@@ -94,7 +94,50 @@ class mainScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 60,
+                child: ListView.builder(
+                  scrollDirection:Axis.horizontal,
+                  itemCount: tagList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Row(
+                           children: [
+                           ImageIcon(Assets.icons.hashtag),
+                           SizedBox(width: 8,),
+                           //Text(tagList[index].title,style: textTheme.headline2,)
+
+
+
+                           ],
+
+
+                        ),
+                        height: 60,
+
+                      decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(24)),
+                      gradient: LinearGradient(
+                        colors: gradiantColors.tags,
+                        begin: Alignment.centerRight,
+                        end: Alignment.centerLeft,
+                        
+                         ),
+                       
+                      ),
+                      ),
+                    );
+              
+              
+              
+                  }),
               )
+             
+
+          
             ],
           ),
         ),
