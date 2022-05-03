@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:taekibloc1/My_strings.dart';
 import 'package:taekibloc1/gen/assets.gen.dart';
 
 import 'package:taekibloc1/models/fakedata.dart';
 import 'package:taekibloc1/my_colors.dart';
 
 class mainScreen extends StatelessWidget {
-  
-
   @override
   Widget build(BuildContext context) {
-
-    var textTheme=Theme.of(context).textTheme;
+    var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
+    double bodyMargin = size.width / 12;
 
     return SafeArea(
       child: Scaffold(
@@ -22,13 +21,13 @@ class mainScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Icon(Icons.menu),
+                  const Icon(Icons.menu),
                   Image(
                     image: Assets.images.splash,
                     width: size.width / 4,
                     height: size.height / 13.6,
                   ),
-                  Icon(Icons.search),
+                  const Icon(Icons.search),
                 ],
               ),
               const SizedBox(
@@ -42,102 +41,145 @@ class mainScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(16)),
                       image: DecorationImage(
-                        image:AssetImage(homePagePostermap["imageUrl"]),
+                        image: AssetImage(homePagePostermap["imageUrl"]),
                         fit: BoxFit.cover,
                       ),
                     ),
-                      foregroundDecoration:const BoxDecoration(
+                    foregroundDecoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         gradient: LinearGradient(
                             colors: gradiantColors.home_poster_text,
                             begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter)) ,
-
+                            end: Alignment.bottomCenter)),
                   ),
-                  
                   Positioned(
                     right: 0,
                     left: 0,
                     bottom: 8,
                     child: Column(
-                        children: [
-                           Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              homePagePostermap["writer"] +
+                                  "-" +
+                                  homePagePostermap["data"],
+                              style: textTheme.subtitle1,
+                            ),
+                            Row(
                               children: [
-                                     Text(homePagePostermap["writer"]+"-"+homePagePostermap["data"],style:textTheme.subtitle1 ,),
-                                    
-                                      Row(
-
-
-                                        children: [
-                                      
-                                          Text(homePagePostermap["view"],style: textTheme.subtitle2,),
-                                          SizedBox(width: 8,),
-                                          Icon(Icons.remove_red_eye,color: Colors.white,size: 16,),
-                                        ],
-                                      ),
-                  
+                                Text(
+                                  homePagePostermap["view"],
+                                  style: textTheme.subtitle2,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Icon(
+                                  Icons.remove_red_eye,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
                               ],
-                             
-                  
-                           ),
-                            
-                                      Text(homePagePostermap["title"],style: textTheme.headline1,),
-                  
-                  
-                  
-                  
-                        ],
-                  
-                  
-                  
+                            ),
+                          ],
+                        ),
+                        Text(
+                          homePagePostermap["title"],
+                          style: textTheme.headline1,
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 16,
+              ),
+              //listhastag
               SizedBox(
                 height: 60,
                 child: ListView.builder(
-                  scrollDirection:Axis.horizontal,
-                  itemCount: tagList.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: Row(
-                           children: [
-                           ImageIcon(Assets.icons.hashtag),
-                           SizedBox(width: 8,),
-                           //Text(tagList[index].title,style: textTheme.headline2,)
-
-
-
-                           ],
-
-
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tagList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(
+                            0, 8, index == 0 ? bodyMargin : 11, 8),
+                        child: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                            child: Row(
+                              children: [
+                                ImageIcon(
+                                  Assets.icons.hashtag,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  tagList[index].title,
+                                  style: textTheme.headline2,
+                                )
+                              ],
+                            ),
+                          ),
+                          height: 60,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                            gradient: LinearGradient(
+                              colors: gradiantColors.tags,
+                              begin: Alignment.centerRight,
+                              end: Alignment.centerLeft,
+                            ),
+                          ),
                         ),
-                        height: 60,
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              //bluepen
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin, bottom: 8),
+                child: Row(
+                  children: [
+                    ImageIcon(
+                      Assets.icons.bluepen,
+                      color: solIdColors.seeMore,
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      My_Strings.viewHotestBlog,
+                      style: textTheme.headline3,
+                    ),
+                  ],
+                ),
+              ),
 
-                      decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(24)),
-                      gradient: LinearGradient(
-                        colors: gradiantColors.tags,
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        
-                         ),
-                       
-                      ),
-                      ),
-                    );
-              
-              
-              
-                  }),
-              )
-             
-
-          
+              //listmatalbblog
+              SizedBox(
+                height: size.height / 4.1,
+                child: ListView.builder(
+                    itemCount: 7,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding:  EdgeInsets.fromLTRB(0,0,index==0?bodyMargin:11,0),
+                        child: Container(
+                          height: 50,
+                          width: 100,
+                          color: Colors.yellow,
+                        ),
+                      );
+                    }),
+              ),
             ],
           ),
         ),
