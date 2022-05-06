@@ -45,9 +45,9 @@ class MyApp extends StatelessWidget {
                 color: solIdColors.postersubTitle,
               ),  
           subtitle2: TextStyle(
-          
+              fontFamily: 'dana',
              fontSize: 16.0, fontWeight: FontWeight.w300,
-                color: solIdColors.postersubTitle,
+                color: Color.fromARGB(197, 255, 255, 255),
               ),  
           headline2: TextStyle(
               fontFamily: 'dana',

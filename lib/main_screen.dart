@@ -218,7 +218,7 @@ class mainScreen extends StatelessWidget {
                                           children: [
                                             Text(
                                               blogList[index].views,
-                                              style: textTheme.subtitle2,
+                                              style: textTheme.subtitle1,
                                             ),
                                             SizedBox(
                                               width: 3,
@@ -241,7 +241,7 @@ class mainScreen extends StatelessWidget {
                                 blogList[index].title,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
-                              style: textTheme.subtitle1,
+                              
                               ),
                               width: size.width / 2.4,
                             )
