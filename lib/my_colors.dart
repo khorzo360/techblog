@@ -24,6 +24,7 @@ class gradiantColors{
 
 static const List<Color> bottomNav=[const Color.fromARGB(255, 25, 0, 94),const Color.fromARGB(255, 68, 4, 87)];
 static const List<Color> tags=[const Color.fromARGB(255, 0, 0, 0),const Color.fromARGB(255, 68, 63, 63)];
+static const List<Color> blogPost=[const Color.fromARGB(255, 0, 0, 0),const Color.fromARGB(0, 0, 0, 0)];
 static const List<Color> home_poster_text=[const Color.fromARGB(0, 0, 0, 0),const Color.fromARGB(190, 72, 20, 88),const Color.fromARGB(190, 28, 20, 81)];
 
 

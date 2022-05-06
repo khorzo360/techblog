@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:taekibloc1/My_strings.dart';
 import 'package:taekibloc1/gen/assets.gen.dart';
@@ -163,19 +165,87 @@ class mainScreen extends StatelessWidget {
                 ),
               ),
 
-              //listmatalbblog
+              //list blog
               SizedBox(
-                height: size.height / 4.1,
+                height: size.height / 3.5,
                 child: ListView.builder(
                     itemCount: 7,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
+                      //blogitem
                       return Padding(
-                        padding:  EdgeInsets.fromLTRB(0,0,index==0?bodyMargin:11,0),
-                        child: Container(
-                          height: 50,
-                          width: 100,
-                          color: Colors.yellow,
+                        padding:  EdgeInsets.only(right:index == 0 ? bodyMargin : 15,  ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.height / 5.3,
+                              width: size.width / 2.4,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(16)),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            blogList[index].imageUrl),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    foregroundDecoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(16)),
+                                      gradient: LinearGradient(
+                                        colors: gradiantColors.blogPost,
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter,
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 8,
+                                    right: 0,
+                                    left: 0,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(
+                                          blogList[index].writer,
+                                          style: textTheme.subtitle1,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              blogList[index].views,
+                                              style: textTheme.subtitle2,
+                                            ),
+                                            SizedBox(
+                                              width: 3,
+                                            ),
+                                            Icon(
+                                              Icons.remove_red_eye,
+                                              color: Colors.white,
+                                              size: 16,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              child: Text(
+                                blogList[index].title,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              
+                              ),
+                              width: size.width / 2.4,
+                            )
+                          ],
                         ),
                       );
                     }),
