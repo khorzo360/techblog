@@ -241,7 +241,7 @@ class mainScreen extends StatelessWidget {
                                 blogList[index].title,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
-                              
+                              style: textTheme.subtitle1,
                               ),
                               width: size.width / 2.4,
                             )
