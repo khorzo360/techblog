@@ -1,4 +1,4 @@
-import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
 import 'package:taekibloc1/My_strings.dart';
@@ -16,242 +16,362 @@ class mainScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Icon(Icons.menu),
-                  Image(
-                    image: Assets.images.splash,
-                    width: size.width / 4,
-                    height: size.height / 13.6,
-                  ),
-                  const Icon(Icons.search),
-                ],
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Stack(
-                children: [
-                  Container(
-                    width: size.width / 1.19,
-                    height: size.height / 4.2,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
-                      image: DecorationImage(
-                        image: AssetImage(homePagePostermap["imageUrl"]),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    foregroundDecoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(16)),
-                        gradient: LinearGradient(
-                            colors: gradiantColors.home_poster_text,
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter)),
-                  ),
-                  Positioned(
-                    right: 0,
-                    left: 0,
-                    bottom: 8,
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              homePagePostermap["writer"] +
-                                  "-" +
-                                  homePagePostermap["data"],
-                              style: textTheme.subtitle1,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  homePagePostermap["view"],
-                                  style: textTheme.subtitle2,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Icon(
-                                  Icons.remove_red_eye,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Text(
-                          homePagePostermap["title"],
-                          style: textTheme.headline1,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              //listhastag
-              SizedBox(
-                height: 60,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: tagList.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            0, 8, index == 0 ? bodyMargin : 11, 8),
-                        child: Container(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                            child: Row(
-                              children: [
-                                ImageIcon(
-                                  Assets.icons.hashtag,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  tagList[index].title,
-                                  style: textTheme.headline2,
-                                )
-                              ],
-                            ),
-                          ),
-                          height: 60,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(24)),
-                            gradient: LinearGradient(
-                              colors: gradiantColors.tags,
-                              begin: Alignment.centerRight,
-                              end: Alignment.centerLeft,
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
-              ),
-              SizedBox(
-                height: 32,
-              ),
-              //bluepen
-              Padding(
-                padding: EdgeInsets.only(right: bodyMargin, bottom: 8),
-                child: Row(
+            appBar: AppBar(
+              backgroundColor: solIdColors.scafoldBg,
+              elevation: 0,
+              title:Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ImageIcon(
-                      Assets.icons.bluepen,
-                      color: solIdColors.seeMore,
+                    const Icon(Icons.menu,color: Colors.black,),
+                    Image(
+                      image: Assets.images.splash,
+                     
+                      height: size.height / 13.6,
                     ),
-                    const SizedBox(
-                      width: 8,
+                    
+                    const Icon(Icons.search,color: Colors.black,),
+                  ],
+                ) ,
+
+
+            ),
+
+        body: Stack(
+          children: [
+                     SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      width: size.width / 1.19,
+                      height: size.height / 4.2,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                        image: DecorationImage(
+                          image: AssetImage(homePagePostermap["imageUrl"]),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      foregroundDecoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(16)),
+                          gradient: LinearGradient(
+                              colors: gradiantColors.home_poster_text,
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter)),
                     ),
-                    Text(
-                      My_Strings.viewHotestBlog,
-                      style: textTheme.headline3,
+                    Positioned(
+                      right: 0,
+                      left: 0,
+                      bottom: 8,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                homePagePostermap["writer"] +
+                                    "-" +
+                                    homePagePostermap["data"],
+                                style: textTheme.subtitle1,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    homePagePostermap["view"],
+                                    style: textTheme.subtitle2,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Icon(
+                                    Icons.remove_red_eye,
+                                    color: Colors.white,
+                                    size: 16,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Text(
+                            homePagePostermap["title"],
+                            style: textTheme.headline1,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              ),
-
-              //list blog
-              SizedBox(
-                height: size.height / 3.5,
-                child: ListView.builder(
-                    itemCount: 7,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      //blogitem
-                      return Padding(
-                        padding:  EdgeInsets.only(right:index == 0 ? bodyMargin : 15,  ),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: size.height / 5.3,
-                              width: size.width / 2.4,
-                              child: Stack(
+                const SizedBox(
+                  height: 16,
+                ),
+                //listhastag
+                SizedBox(
+                  height: 60,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: tagList.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0, 8, index == 0 ? bodyMargin : 11, 8),
+                          child: Container(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                              child: Row(
                                 children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(16)),
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            blogList[index].imageUrl),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    foregroundDecoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(16)),
-                                      gradient: LinearGradient(
-                                        colors: gradiantColors.blogPost,
-                                        begin: Alignment.bottomCenter,
-                                        end: Alignment.topCenter,
-                                      ),
-                                    ),
+                                  ImageIcon(
+                                    Assets.icons.hashtag,
+                                    color: Colors.white,
+                                    size: 16,
                                   ),
-                                  Positioned(
-                                    bottom: 8,
-                                    right: 0,
-                                    left: 0,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(
-                                          blogList[index].writer,
-                                          style: textTheme.subtitle1,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              blogList[index].views,
-                                              style: textTheme.subtitle1,
-                                            ),
-                                            SizedBox(
-                                              width: 3,
-                                            ),
-                                            Icon(
-                                              Icons.remove_red_eye,
-                                              color: Colors.white,
-                                              size: 16,
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Text(
+                                    tagList[index].title,
+                                    style: textTheme.headline2,
                                   )
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              child: Text(
-                                blogList[index].title,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                              
+                            height: 60,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(24)),
+                              gradient: LinearGradient(
+                                colors: gradiantColors.tags,
+                                begin: Alignment.centerRight,
+                                end: Alignment.centerLeft,
                               ),
-                              width: size.width / 2.4,
-                            )
-                          ],
-                        ),
-                      );
-                    }),
-              ),
-            ],
+                            ),
+                          ),
+                        );
+                      }),
+                ),
+                SizedBox(
+                  height: 32,
+                ),
+                //bluepen
+                Padding(
+                  padding: EdgeInsets.only(right: bodyMargin, bottom: 18),
+                  child: Row(
+                    children: [
+                      ImageIcon(
+                        Assets.icons.bluepen,
+                        color: solIdColors.seeMore,
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        My_Strings.viewHotestBlog,
+                        style: textTheme.headline3,
+                      ),
+                    ],
+                  ),
+                ),
+
+                //list blog
+                SizedBox(
+                  height: size.height / 3.5,
+                  child: ListView.builder(
+                      itemCount: 7,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        //blogitem
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            right: index == 0 ? bodyMargin : 11,
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: size.height / 5.3,
+                                width: size.width / 2.4,
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(16)),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                              blogList[index].imageUrl),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      foregroundDecoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(16)),
+                                        gradient: LinearGradient(
+                                          colors: gradiantColors.blogPost,
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: 8,
+                                      right: 0,
+                                      left: 0,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Text(
+                                            blogList[index].writer,
+                                            style: textTheme.subtitle1,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                blogList[index].views,
+                                                style: textTheme.subtitle1,
+                                              ),
+                                              SizedBox(
+                                                width: 3,
+                                              ),
+                                              Icon(
+                                                Icons.remove_red_eye,
+                                                color: Colors.white,
+                                                size: 16,
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                             
+                              SizedBox(
+                                child: Text(
+                                  blogList[index].title,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
+                                width: size.width / 2.4,
+                              )
+                            ],
+                          ),
+                        );
+                      }),
+                ), //end listblog
+                   SizedBox(height: 8,),
+                //listpodcast
+                // onvan podcast
+                Padding(
+                  padding: EdgeInsets.only(right: bodyMargin, bottom: 18),
+                  child: Row(
+                    children: [
+                      ImageIcon(
+                        Assets.icons.pocdcast,
+                        color: solIdColors.seeMore,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        My_Strings.viewHotpodcast,
+                        style: textTheme.headline3,
+                      )
+                    ],
+                  ),
+                ), //end onvan podcast
+                SizedBox(
+                  height: 3,
+                ),
+                //listpodcast
+                SizedBox(
+                  height: size.height / 3.5,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: podcastList.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                              right: index == 0 ? bodyMargin : 11),
+                          child: Column(
+                            children: [
+                              //akspodcast
+                              Container(
+                                height: size.height / 5.3,
+                                width: size.width / 2.4,
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(16)),
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                          podcastList[index].imageUrl),
+                                      fit: BoxFit.cover,
+                                    )),
+                              ),
+                              // end ask
+                              SizedBox(height: 8,),
+                              SizedBox(
+                                child: Text(
+                                  podcastList[index].title,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                width: size.width / 2.4,
+                              ),
+                              //end list podcast
+                            ],
+                          ),
+                        );
+                      }),
+                )
+              ],
+            ),
           ),
+        ),
+        // end  1
+        Positioned
+        (
+          right: 0,
+          left: 0,
+          bottom: 5,
+          child: Container(
+                  height: size.height/10,
+                  decoration:  const BoxDecoration(
+               
+                   gradient:LinearGradient(colors:gradiantColors.bottomNavbg,begin: Alignment.topCenter,end: Alignment.bottomCenter ),
+                  ),
+                  child:Padding(
+                    padding: const EdgeInsets.only(right:8,left: 8 ),
+                    child: Container(
+                    height: size.height/8,
+                    decoration:  const BoxDecoration(
+                     borderRadius:BorderRadius.all(Radius.circular(18)),
+                     gradient:LinearGradient(colors:gradiantColors.bottomNav) ,
+          ),
+                      child: Row(
+                          children: [
+                              IconButton(onPressed: (){}, icon:ImageIcon(Assets.icons.home)),
+                              IconButton(onPressed: (){}, icon:ImageIcon(Assets.icons.user)),
+                              IconButton(onPressed: (){}, icon:ImageIcon(Assets.icons.write)),
+
+
+                          ],
+
+
+                      ),
+
+                    ),
+                  ),
+          ),
+        ),
+
+
+
+      ],
+        
         ),
       ),
     );
